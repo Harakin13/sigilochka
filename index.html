@@ -148,6 +148,23 @@
             }
         }
     </style>
+
+    <style>
+        /* тёмная жирная версия для контракта: видна и на пергаменте, и на крови */
+        :root { --halo: drop-shadow(0 0 1.5px rgba(255,228,180,.95)) drop-shadow(0 0 7px rgba(255,56,0,.6)); }
+        svg .line { stroke: #1c0000; stroke-width: 6px; filter: var(--halo); }
+        svg .line:hover { stroke: #3a0000; filter: var(--halo); }
+        .outer-circle .line:nth-child(1) { stroke: #2a0000; stroke-width: 8px; }
+        .outer-circle .line:nth-child(2) { stroke: #1c0000; }
+        .inner-circle .line:nth-child(1) { stroke: #2a0000; stroke-width: 7px; }
+        .inner-circle .line:nth-child(2) { stroke: #3a0000; }
+        .outer-star .line { stroke: #2a0000; filter: var(--halo); }
+        .inner-star .line { stroke: #1c0000; filter: var(--halo); }
+        svg .text { fill: #2a0000; stroke: #2a0000; stroke-width: 1.2px; filter: var(--halo); }
+        @keyframes demonPulse { 0% { stroke-width: 4px; opacity: .85; } 100% { stroke-width: 8px; opacity: 1; } }
+        @keyframes starFlicker { 0%, 100% { opacity: .9; } 50% { opacity: .7; } }
+        @keyframes textGlow { 0% { fill: #2a0000; } 50% { fill: #5c0000; } 100% { fill: #1c0000; } }
+    </style>
 </head>
 
 <body>
@@ -238,7 +255,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
     <script>
         // Демонические цвета для случайного изменения
-        const demonColors = ['#8b0000', '#ff3800', '#ff0066', '#dc143c', '#cc4125'];
+        const demonColors = ['#1c0000', '#2a0000', '#3a0000', '#4a0000', '#240000'];
 
         function randomDemonColor() {
             return demonColors[Math.floor(Math.random() * demonColors.length)];
